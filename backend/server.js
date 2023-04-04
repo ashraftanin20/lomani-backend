@@ -24,9 +24,15 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect(process.env.MONGODB_URL , {
-    
+try {
+    mongoose.connect(process.env.MONGODB_URL , {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
+} catch (error) {
+    console.log(error);
+}
+
 
 app.get('/', (req, res) => {
     res.send('Server is ready.');
@@ -46,5 +52,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log('Serve at '  + PORT);
+    console.log('Serve at http://localhost:' + PORT);
 });
