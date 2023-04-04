@@ -1,5 +1,4 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
@@ -10,7 +9,7 @@ dotenv.config();
 
 const app = express();
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "https://lomani.onrender.com");
     res.header(
         "Access-Control-Allow-Methods",
         "GET, HEAD, OPTIONS, POST, PUST, DELETE"
@@ -24,10 +23,10 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect('mongodb+srv://tanin:tanin23@cluster0.7thdk.mongodb.net/lomani?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+//mongoose.connect('mongodb+srv://tanin:tanin23@cluster0.7thdk.mongodb.net/lomani?retryWrites=true&w=majority', {
+ //   useNewUrlParser: true,
+ //   useUnifiedTopology: true,
+//});
 
 
 app.get('/', (req, res) => {
