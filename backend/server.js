@@ -4,6 +4,7 @@ import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
+import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -23,6 +24,10 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 app.get('/', (req, res) => {
     res.send('Server is ready.');
