@@ -24,14 +24,12 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-try {
-    mongoose.connect(process.env.MONGODB_URL , {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-} catch (error) {
-    console.log(error);
-}
+mongoose.connect(process.env.MONGODB_URL,{
+    useUnifiedTopology:true,
+    useNewUrlParser:true
+}).then(()=> console.log("DataBase Connected")).catch((err)=>{
+    console.log(err);
+})
 
 
 app.get('/', (req, res) => {
