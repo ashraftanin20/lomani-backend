@@ -1,7 +1,6 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from 'bcryptjs';
-import data from "../data.js";
 import User from "../models/userModel.js";
 import { generateToken, isAdmin, isAuth } from "../utils.js";
 
@@ -12,11 +11,11 @@ userRouter.get('/top-sellers', expressAsyncHandler(async(req, res) => {
     res.send(topSellers);
 }));
 
-userRouter.get('/seed', 
-    expressAsyncHandler(async (req, res) => {
-        const createdUsers = await User.insertMany(data.users);
-        res.send({ createdUsers });
-}));
+// userRouter.get('/seed', 
+//     expressAsyncHandler(async (req, res) => {
+//         const createdUsers = await User.insertMany(data.users);
+//         res.send({ createdUsers });
+// }));
 
 userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({email: req.body.email});
