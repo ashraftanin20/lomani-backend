@@ -23,11 +23,6 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-//mongoose.connect('mongodb+srv://tanin:tanin23@cluster0.7thdk.mongodb.net/lomani?retryWrites=true&w=majority', {
- //   useNewUrlParser: true,
- //   useUnifiedTopology: true,
-//});
-
 
 app.get('/', (req, res) => {
     res.send('Server is ready.');
